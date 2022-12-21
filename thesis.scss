@@ -1,0 +1,61 @@
+/*-- scss:defaults --*/
+$primary: #253b72;
+$code-bg: #ebebeb;
+$code-blog-bg: #ebebeb;
+
+/*-- scss:rules --*/
+:root {
+  --headings: #253b72;
+  --highlight: #b8c8eb;
+  --darkgray: #222222;
+  --lightgray: #ebebeb;
+  --sanserif: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Title */
+
+.quarto-title-block {
+  font-family: var(--sanserif) !important;
+  background: var(--lightgray) !important;
+}
+
+.quarto-title-banner,.quarto-secondary-nav h1 {
+  color: var(--headings) !important;
+}
+
+/* Sidebar and footer */
+
+.sidebar,.nav-footer,.nav-page-text {
+  font-family: var(--sanserif);
+  }
+
+/* Headers */
+
+h1, h2, h3, h4 {
+  color: var(--headings);
+  font-family: var(--sanserif);
+  font-weight: bold;
+}
+
+/* Tables */
+
+table {
+  background: var(--lightgray);
+  border: 0px;
+}
+
+table td, table th {
+  color: var(--darkgray);
+  border: 1px;
+  font-size: 11pt;
+  height: 15px;
+  padding: 0px 5px 0px 5px;
+  cellpadding: 0;
+  cellspacing: 0;
+  text-shadow: none;
+}
+
+th {
+  background: var(--highlight);
+  font-weight: bold;
+}

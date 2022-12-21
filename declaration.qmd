@@ -1,0 +1,89 @@
+# Declaration {-}
+
+> Use only one of the following declarations.
+
+## Standard thesis
+
+This thesis is an original work of my research and contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
+
+Student name:
+
+Student signature:
+
+Date:
+
+### Publications during enrolment {-}
+
+> Remove this section if you do not have publications.
+
+The material in @sec-intro has been submitted to the journal *Journal of Impossible Results* for possible publication.
+
+The contribution in @sec-litreview of this thesis was presented in the International Symposium on Nonsense held in Dublin, Ireland, in July 2022.
+
+### Reproducibility statement
+
+This thesis is written using Quarto with renv [@renv] to create a reproducible environment. All materials (including the data sets and source files) required to reproduce this document can be found at the Github repository [`github.com/SusanSu/thesis`](https://github.com/SusanSu/thesis).
+
+This work is licensed under a [Creative Commons  Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+## Thesis including published works declaration
+
+I hereby declare that this thesis contains no material which has been accepted for the award of any other degree or diploma at any university or equivalent institution and that, to the best of my knowledge and belief, this thesis contains no material previously published or written by another person, except where due reference is made in the text of the thesis.
+
+This thesis includes ?? original papers published in peer reviewed journals and ?? submitted publications. The ideas, development and writing up of all the papers in the thesis were the principal responsibility of myself, the student, working within the Department of Econometrics & Business Statistics under the supervision of ??
+
+(The inclusion of co-authors reflects the fact that the work came from active collaboration between researchers and acknowledges input into team-based research.)
+
+In the case of (??insert chapter numbers) my contribution to the work involved the following:
+
+
+```{r}
+#| message: false
+#| echo: false
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+tab <- tribble(
+  ~`Thesis chapter`, ~`Publication title`, ~Status, ~`Nature and % of student contribution`, ~`Nature and % of coauthors' contribution`, ~`Coauthors are Monash students`,
+  2, "The life cycle of Mongolian crickets", "Submitted", "Concept and data analysis, writing first draft: 60%", "Shu Xu, input into manuscript: 25%; Eddie Betts, input into manuscript: 15%", "Shu Xu: No; Eddie Betts: Yes"
+)
+```
+
+::: {.content-visible when-format="html"}
+
+```{r}
+tab |>
+  kable() |>
+  row_spec(0, align = "l")
+```
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+tab |>
+  kable(booktabs = TRUE, format = "latex") |>
+  kable_styling(full_width = TRUE, font_size = 10, latex_options = "scale_down") |>
+  column_spec(1, width = "1.2cm") |>
+  column_spec(c(2, 4:6), width = "2.6cm") |>
+  row_spec(0, align = "l", bold = TRUE)
+```
+
+:::
+
+I have / have not renumbered sections of submitted or published papers in order to generate a consistent presentation within the thesis.
+
+Student name:
+
+Student signature:
+
+Date:
+
+I hereby certify that the above declaration correctly reflects the nature and extent of the student’s and co-authors’ contributions to this work. In instances where I am not the responsible author I have consulted with the responsible author to agree on the respective contributions of the authors.
+
+Main Supervisor name:
+
+Main Supervisor signature:
+
+Date:

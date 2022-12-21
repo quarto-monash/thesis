@@ -1,0 +1,19 @@
+# Acknowledgements {-}
+
+I would like to thank my pet goldfish for ...
+
+> In accordance with Chapter 7.1.4 of the research degrees handbook, if you have engaged the services of a professional editor, you must provide their name and a brief description of the service rendered. If the professional editor's current or former area of academic specialisation is similar your own, this too should be stated as it may suggest to examiners that the editor's advice to the student has extended beyond guidance on English expression to affect the substance and structure of the thesis.
+
+> Free text section for you to record your acknowledgment and gratitude for the more general academic input and support such as financial support from grants and scholarships and the non-academic support you have received during the course of your enrolment. If you are a recipient of the “Australian Government Research Training Program Scholarship”, you are required to include the following statement:
+
+> > “This research was supported by an Australian Government Research Training Program (RTP) Scholarship.”
+
+> You may also wish to acknowledge significant and substantial contribution made by others to the research, work and writing represented and/or reported in the thesis. These could include significant contributions to: the conception and design of the project; non-routine technical work; analysis and interpretation of research data; drafting significant parts of the work or critically revising it so as to contribute to the interpretation.
+
+
+
+<!-- 
+The following line is required to re-set page numbering after preliminary material in the pdf output. Do not remove
+-->
+
+\clearpage\pagenumbering{arabic}\setcounter{page}{0}
