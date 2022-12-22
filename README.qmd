@@ -12,42 +12,17 @@ library(quarto)
 library(magick)
 
 # Render template
-quarto_render(input = "template.qmd")
+quarto_render(input = "index.qmd")
 # Convert rendered PDF to PNG
-image_read_pdf("template.pdf") |>
-  image_montage(geometry = "x2000+25+35", tile = "3", bg = "grey92", shadow = TRUE) |>
+image_read_pdf("_book/This-is-my-thesis.pdf", pages = 1, density=100) |>
   image_convert(format = "png") |>
-  image_write("examples/template.png")
+  image_write("examples/template.png", )
 # Move pdf to examples folder
-fs::file_move("template.pdf", "examples/template.pdf")
+fs::file_copy("_book/This-is-my-thesis.pdf", "examples/template.pdf", overwrite = TRUE)
 ```
 
-# Monash Working Paper Format Template
+# Monash Thesis Template
 
-This is a Quarto template that assists you in creating a working paper, optionally with Monash University branding.
-
-## Creating a new working paper
-
-You can use this as a template to create a working paper.
-To do this, use the following command:
-
-```bash
-quarto use template numbats/monash-quarto-workingpaper
-```
-
-This will install the extension and create an example qmd file that you can use as a starting place for your working paper.
-
-## Installation for existing document
-
-You may also use this format with an existing Quarto project or document.
-From the quarto project or document directory, run the following command to install this format:
-
-```bash
-quarto install extension numbats/monash-quarto-workingpaper
-```
-
-## Example
-
-- [template.qmd](template.qmd)
+This is a Quarto template that assists you in creating a Monash University thesis. Either fork or download the repository to get started.
 
 [![](examples/template.png)](examples/template.pdf)
