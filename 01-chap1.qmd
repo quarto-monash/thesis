@@ -26,12 +26,13 @@ Included in this template is a file called `sales.csv`. This contains quarterly 
 ```{r}
 #| label: load_data
 #| echo: true
-sales <- readr::read_csv(here::here("data/sales.csv")) %>%
-  rename(Quarter = `...1`) %>%
+#| message: false
+sales <- readr::read_csv(here::here("data/sales.csv")) |>
+  rename(Quarter = `...1`) |>
   mutate(
     Quarter = as.Date(paste0("01-", Quarter), "%d-%b-%y"),
     Quarter = yearquarter(Quarter)
-  ) %>%
+  ) |>
   as_tsibble(index = Quarter)
 ```
 
@@ -44,8 +45,8 @@ Any data you use in your thesis can go into the `data` directory. The data shoul
 ```{r}
 #| label: fig-deaths
 #| fig-cap: "Quarterly sales, advertising and GDP data."
-sales %>%
-  pivot_longer(Sales:GDP) %>%
+sales |>
+  pivot_longer(Sales:GDP) |>
   autoplot(value) +
   facet_grid(name ~ ., scales = "free_y") +
   theme(legend.position = "none")
@@ -57,21 +58,21 @@ We can fit a dynamic regression model to the sales data.
 
 ```{r}
 #| echo: false
-fit <- sales %>%
+fit <- sales |>
   model(arima = ARIMA(Sales ~ GDP + AdBudget + PDQ(D = 1)))
 report(fit)
 coef <- tidy(fit)
-phi1 <- coef %>%
-  filter(term == "ar1") %>%
+phi1 <- coef |>
+  filter(term == "ar1") |>
   pull(estimate)
-Theta1 <- coef %>%
-  filter(term == "sma1") %>%
+Theta1 <- coef |>
+  filter(term == "sma1") |>
   pull(estimate)
-gdp <- coef %>%
-  filter(term == "GDP") %>%
+gdp <- coef |>
+  filter(term == "GDP") |>
   pull(estimate)
-adbudget <- coef %>%
-  filter(term == "AdBudget") %>%
+adbudget <- coef |>
+  filter(term == "AdBudget") |>
   pull(estimate)
 ```
 
@@ -94,15 +95,15 @@ Let's assume future advertising spend and GDP are at the current levels. Then fo
 #| label: tbl-salesforecasts
 #| tbl-cap: "Forecasts for the next year assuming Advertising budget and GDP are unchanged."
 #| tbl-cap-location: bottom
-future <- new_data(sales, n = 4) %>%
+future <- new_data(sales, n = 4) |>
   mutate(
     AdBudget = tail(sales$AdBudget, 1),
     GDP = tail(sales$GDP, 1)
   )
 fc <- forecast(fit, new_data = future)
-as.data.frame(fc) %>%
-  select(Quarter, .mean) %>%
-  rename(`Sales forecast` = .mean) %>%
+as.data.frame(fc) |>
+  select(Quarter, .mean) |>
+  rename(`Sales forecast` = .mean) |>
   knitr::kable(booktabs = TRUE, digits = 1)
 ```
 
