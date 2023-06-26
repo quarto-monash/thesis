@@ -46,7 +46,10 @@ format:
       - cosmo
       - thesis.scss
     fontsize: 16px
-    mainfont: "Merriweather, Georgia, serif"
+    mainfont: "Merriweather, serif"
     code-link: true
+    html-math-method: katex
+    include-in-header:
+      file: header.html
   monashthesis-pdf:
     keep-tex: false

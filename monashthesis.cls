@@ -1,7 +1,7 @@
 %% monashthesis Class for LaTeX2e.
-%% Version 5.0
+%% Version 5.1
 %% By Rob J. Hyndman.
-%% 28 March 2018
+%% Updated 26 June 2023
 %%
 %% This class file is for honours and postgraduate research students
 %% in the Department of Econometrics & Business Statistics
@@ -14,7 +14,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \RequirePackage{bera}
-\RequirePackage{mathpazo}
+\RequirePackage[charter,expert]{mathdesign}
+\RequirePackage[scale=0.9]{sourcecodepro}
+\RequirePackage[lf,t]{FiraSans}
 
 \newif\ifsinglesp@
 \newif\ifdoublesp@
@@ -85,7 +87,7 @@
 %% SECTION TITLES
 \RequirePackage[compact,sf,bf]{titlesec}
 \titleformat{\section}[block]
-  {\fontsize{15}{17}\bfseries\sffamily}
+  {\fontsize{14}{16}\bfseries\sffamily}
   {\thesection}
   {0.4em}{}
 \titleformat{\subsection}[block]
@@ -159,9 +161,9 @@
 
 \def\titlepage{{\sf
     \thispagestyle{empty}%
-    \null\vskip1cm%
+    \null\vskip-.4cm%
     \centerline{\includegraphics[width=12cm]{monash-logo}}
-    \vfill
+    \vspace*{4cm}
     \begin{center}\fontsize{24}{28}\sf
         \textbf{\expandafter{\@title}}\\
         \fontsize{18}{20}\sf
