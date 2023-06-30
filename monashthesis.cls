@@ -10,6 +10,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{monashthesis}[2016/09/06 Monash Thesis Class]
 
+%% MATHS
+\RequirePackage{bm,amsmath}
+\allowdisplaybreaks
+
 %% FONT
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -67,10 +71,6 @@
 \fancyfoot[C]{\sf\thepage} % except the center
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
-
-%% MATHS
-\RequirePackage{bm,amsmath}
-\allowdisplaybreaks
 
 %% GRAPHICS
 \RequirePackage{graphicx}
