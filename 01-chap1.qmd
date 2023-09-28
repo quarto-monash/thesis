@@ -54,20 +54,13 @@ sales |>
 
 ## Results from analyses
 
-We can fit a dynamic regression model to the sales data.
+We can fit a regression model to the sales data.
 
 ```{r}
 #| echo: false
 fit <- sales |>
-  model(arima = ARIMA(Sales ~ GDP + AdBudget + PDQ(D = 1)))
-report(fit)
+  model(arima = TSLM(Sales ~ GDP + AdBudget))
 coef <- tidy(fit)
-phi1 <- coef |>
-  filter(term == "ar1") |>
-  pull(estimate)
-Theta1 <- coef |>
-  filter(term == "sma1") |>
-  pull(estimate)
 gdp <- coef |>
   filter(term == "GDP") |>
   pull(estimate)
@@ -78,33 +71,25 @@ adbudget <- coef |>
 
 If $y_t$ denotes the sales in quarter $t$, $x_t$ denotes the corresponding advertising budget and $z_t$ denotes the GDP, then the resulting model is:
 $$
-  y_t - y_{t-4} = \beta (x_t-x_{t-4}) + \gamma (z_t-z_{t-4}) + \phi_1 (y_{t-1} - y_{t-5}) + \Theta_1 \varepsilon_{t-4} + \varepsilon_t
+  y_t = \beta x_t + \gamma z_t + \varepsilon_t
 $$ {#eq-drm}
 where
-$\beta = `r sprintf("%.2f", adbudget)`$,
-$\gamma = `r sprintf("%.2f", gdp)`$,
-$\phi_1 = `r sprintf("%.2f", phi1)`$,
+$\hat{\beta} = `r sprintf("%.2f", adbudget)`$,
 and
-$\Theta_1 = `r sprintf("%.2f", Theta1)`$. We can reference this equation using @eq-drm.
+$\hat{\gamma} = `r sprintf("%.2f", gdp)`$.
+We can reference this equation using @eq-drm.
 
 ## Tables
 
-Let's assume future advertising spend and GDP are at the current levels. Then forecasts for the next year are given in @tbl-salesforecasts.
+We can also make a nice summary table of the coefficients, as shown in @tbl-coef
 
 ```{r}
-#| label: tbl-salesforecasts
-#| tbl-cap: "Forecasts for the next year assuming Advertising budget and GDP are unchanged."
-#| tbl-cap-location: bottom
-future <- new_data(sales, n = 4) |>
-  mutate(
-    AdBudget = tail(sales$AdBudget, 1),
-    GDP = tail(sales$GDP, 1)
-  )
-fc <- forecast(fit, new_data = future)
-as.data.frame(fc) |>
-  select(Quarter, .mean) |>
-  rename(`Sales forecast` = .mean) |>
-  knitr::kable(booktabs = TRUE, digits = 1)
+#| label: tbl-coef
+#| tbl-cap: "Coefficients from the fitted model."
+tidy(fit) |>
+  select(term, estimate, p.value) |>
+  rename(Coefficient = term, Estimate = estimate, `P value` = p.value) |>
+  knitr::kable(booktabs = TRUE, digits = 2)
 ```
 
 Again, notice the use of labels and references to automatically generate table numbers.
