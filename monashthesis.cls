@@ -1,36 +1,17 @@
 %% monashthesis Class for LaTeX2e.
-%% Version 5.1
 %% By Rob J. Hyndman.
-%% Updated 26 June 2023
 %%
 %% This class file is for honours and postgraduate research students
 %% in the Department of Econometrics & Business Statistics
 %% at Monash University, Australia.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{monashthesis}[2016/09/06 Monash Thesis Class]
+\ProvidesClass{monashthesis}[2024/01/15 Monash Thesis Class]
 
-%% MATHS
-\RequirePackage{bm,amsmath}
-\allowdisplaybreaks
-
-%% FONT
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\RequirePackage{bera}
-\RequirePackage[charter,expert]{mathdesign}
-\RequirePackage[scale=0.9]{sourcecodepro}
-\RequirePackage[lf,t]{FiraSans}
-
-\newif\ifsinglesp@
-\newif\ifdoublesp@
 \newif\ifsingleside@
-\doublesp@true
 \singleside@false
 \DeclareOption{singleside}{\singleside@true}
 \DeclareOption{doubleside}{\singleside@false}
-\DeclareOption{singlespace}{\singlesp@true}
-\DeclareOption{doublespace}{\doublesp@true}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 \ProcessOptions
@@ -47,6 +28,33 @@
 \else%
   \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,twoside]{geometry}
 \fi%
+
+%% HYPERLINKS
+\RequirePackage{xcolor} % Needed for links
+\definecolor{darkblue}{rgb}{0,0,.6}
+\RequirePackage{url}
+\RequirePackage[citecolor=0 0 0,colorlinks=false]{hyperref}
+\hypersetup{
+     breaklinks=true,
+     bookmarksopen=true,
+     bookmarksnumbered=true,
+     linkcolor=darkblue,
+     urlcolor=blue,
+     citecolor=darkblue,
+     colorlinks=true}
+\usepackage{bookmark}
+
+%% MATHS
+\RequirePackage{bm,amsmath}
+\allowdisplaybreaks
+
+%% FONT
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\RequirePackage{bera}
+\RequirePackage[charter,expert]{mathdesign}
+\RequirePackage[scale=0.9]{sourcecodepro}
+\RequirePackage[lf,t]{FiraSans}
 
 %% CAPTIONS
 \RequirePackage{caption}
@@ -112,70 +120,51 @@
 \RequirePackage{ragged2e}
 
 %% BIBLIOGRAPHY
+% Following taken from https://github.com/jgm/pandoc/blob/main/data/templates/default.latex
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
-\newenvironment{CSLReferences}[2]%
-  {\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
-  {\par}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  %\setlength{\itemsep}{#2\baselineskip}}}
+  \setlength{\itemsep}{2pt}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 %% PARAGRAPH BREAKS
 \setlength{\parskip}{1.4ex}
 \setlength{\parindent}{0em}
 
-%% HYPERLINKS
-\RequirePackage{xcolor} % Needed for links
-\definecolor{darkblue}{rgb}{0,0,.6}
-\RequirePackage{url}
-\RequirePackage[citecolor=0 0 0,colorlinks=false]{hyperref}
-\hypersetup{
-     breaklinks=true,
-     bookmarksopen=true,
-     bookmarksnumbered=true,
-     linkcolor=darkblue,
-     urlcolor=blue,
-     citecolor=darkblue,
-     colorlinks=true}
-\usepackage{bookmark}
 
 %% Set up line spacing
 \AtBeginDocument{%
-\ifsinglesp@%
-  \singlespacing%
-\else%
   \doublespacing%
-\fi%
 }
-
-
-%% \author, \title are defined in report; here are the rest of the
-%% front matter defining macros
-\def\degreetitle{Degree not specified}
-\def\submitdate#1{\gdef\@submitdate{#1}}
-\def\degrees#1{\gdef\@degrees{#1}}
-\def\studentid#1{\gdef\@degrees{#1}}
-\def\@title{}\def\@author{}
-\def\authorname{\@author}
-\def\@degrees{}
-\def\@submitdate{\number\the\year}
-
-\def\titlepage{{\sf
-    \thispagestyle{empty}%
-    \null\vskip-.4cm%
-    \centerline{\includegraphics[width=12cm]{monash-logo}}
-    \vspace*{4cm}
-    \begin{center}\fontsize{24}{28}\sf
-        \textbf{\expandafter{\@title}}\\
-        \fontsize{18}{20}\sf
-        \@author\\
-        \fontsize{13}{15}\sf
-        \@degrees
-    \vfill\fontsize{13}{15}\sf
-        A thesis submitted for the degree of \degreetitle\ at Monash University in \@submitdate\\
-        \affiliation
-    \end{center}
-    %\hrulefill
-    \newpage\mbox{}\thispagestyle{empty}\newpage}}
 
 \numberwithin{section}{chapter}
 \numberwithin{equation}{chapter}
@@ -221,7 +210,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newenvironment{Shaded}{\begin{singlespace}\begin{snugshade}}{\end{snugshade}\end{singlespace}}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}

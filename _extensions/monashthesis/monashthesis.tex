@@ -9,12 +9,6 @@
 % Add any LaTeX packages and other preamble here if required
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author{$author$}
-\title{$title$}
-\def\degreetitle{$degreetype$}
-\degrees{$degrees$}
-\def\affiliation{$affiliation$}
-
 % Add subject and keywords below
 \hypersetup{
      %pdfsubject={The Subject},
@@ -33,11 +27,23 @@
 
 \pagenumbering{roman}
 
-\titlepage
+{\sf\thispagestyle{empty}%
+  \null\vskip-.4cm%
+  \centerline{\includegraphics[width=12cm]{monash-logo}}
+  \vspace*{4cm}
+  \begin{center}\fontsize{24}{28}\sf
+     \textbf{$title$}\\
+     \fontsize{18}{20}\sf $author$\\
+     \fontsize{13}{15}\sf $degrees$
+     \vfill
+     \fontsize{13}{15}\sf A thesis submitted for the degree of\\ $degreetype$\\ at Monash University in \number\the\year\\
+     $affiliation$
+  \end{center}
+  \newpage\mbox{}\thispagestyle{empty}\newpage
+}
 
 {\setstretch{1.2}\sf\tighttoc\doublespacing}
 
 $body$
-
 
 \end{document}

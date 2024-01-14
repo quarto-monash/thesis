@@ -53,3 +53,4 @@ format:
       file: header.html
   monashthesis-pdf:
     keep-tex: false
+    pdf-engine: pdflatex
