@@ -1,62 +1,255 @@
 /*-- scss:defaults --*/
-$primary: #253b72;
-$code-bg: #ebebeb;
-$code-blog-bg: #ebebeb;
+$theme-main: #253b72;
+$theme-gray: #ebebeb;
+$theme-yellow: #F4BA02;
+$theme-orange: #f49b02;
+
+$body-bg: lighten($theme-gray, 20%);
+$body-color: darken($theme-gray, 70%);
+$link-color: $theme-main;
+$primary: $theme-main;
+$sidebar-bg: lighten($theme-main, 15%);
+$sidebar-fg: lighten($theme-gray, 10%);
+
+$font-family-sans-serif: 'Fira Sans', sans-serif;
+$font-family-monospace: 'Hack', monospace;
+
+$h2-font-size: 1.5rem !default;
+$h3-font-size: 1.3rem !default;
+$h4-font-size: 1.1rem !default;
+$h5-font-size: 0.9rem !default;
+
+$code-block-bg: $theme-gray;
+$code-color: $body-color;
 
 /*-- scss:rules --*/
-:root {
-  --headings: #253b72;
-  --highlight: #b8c8eb;
-  --darkgray: #222222;
-  --lightgray: #ebebeb;
-  --sanserif: "Fira Sans", sans-serif;
-  --bs-font-monospace: "Source Code Pro", monospace;
-}
 
-/* Title */
-
-.quarto-title-block {
-  font-family: var(--sanserif) !important;
-  background: var(--lightgray) !important;
-}
-
-.quarto-title-banner,.quarto-secondary-nav h1 {
-  color: var(--headings) !important;
-}
-
-/* Sidebar and footer */
-
-.sidebar,.nav-footer,.nav-page-text {
-  font-family: var(--sanserif);
-  }
-
-/* Headers */
-
-h1, h2, h3, h4 {
-  color: var(--headings);
-  font-family: var(--sanserif);
+h1,
+h2,
+h3 {
+  color: $theme-main;
+  font-family: $font-family-sans-serif;
   font-weight: bold;
 }
 
-/* Tables */
+h1, h2 {
+  border-bottom: 2px solid $theme-main;
+  margin-top: 50px !important;
+}
+
+h4, h5 {
+  color: $body-color;
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+}
+.header-section-number {
+  color: $theme-main;
+}
+
+a {
+  color:$theme-main;
+  text-decoration: none;
+}
+
+a:hover {
+  color: saturate($theme-main, 100%);
+  font-weight: bold;
+}
+
+dt {
+  color: $theme-main;
+}
+
+dd {
+  margin-bottom: 12px;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.quarto-title-banner {
+  background-color: lighten($theme-gray, 20%) !important;
+  color: $theme-main;
+  font-family: $font-family-sans-serif;
+}
+
+.quarto-title-meta,.quarto-title-meta-author {
+  font-family: $font-family-sans-serif;
+  color:  $theme-main;
+}
+
+.quarto-title-banner,.quarto-secondary-nav h1 {
+  border-bottom: 0px;
+  color:  $theme-main;
+}
+
+.panel-caption, .figure-caption, .subfigure-caption, .table-caption, figcaption.quarto-float-caption, caption {
+  font-family: $font-family-sans-serif;
+  color: darken($theme-gray, 70%);
+  background-color: $theme-gray;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.figure {
+  display: block;
+}
 
 table {
-  background: var(--lightgray);
+  background: lighten($theme-gray, 50%);
   border: 0px;
 }
 
 table td, table th {
-  color: var(--darkgray);
   border: 1px;
-  font-size: 11pt;
-  height: 15px;
-  padding: 0px 5px 0px 5px;
+  font-size: 0.9rem;
+  height: 12px;
+  line-height: 1.2;
+  padding: 0;
   cellpadding: 0;
   cellspacing: 0;
   text-shadow: none;
 }
 
 th {
-  background: var(--highlight);
+  color: #ffffff;
+  background-color: lighten($theme-main, 20%) !important;
   font-weight: bold;
 }
+td {
+  background-color: lighten($theme-gray, 60%) !important;
+}
+
+blockquote {
+  quotes: none;
+  text-shadow: none;
+  color: darken($theme-gray, 80%) !important;
+  background: lighten($theme-main, 65%) !important;
+  padding:  7px 20px 7px 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-left: 0px;
+}
+
+pre code {
+  color: $body-color !important;
+  background-color: $code-block-bg;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+div.sourceCode, div.sourceCode pre.sourceCode {
+    color: $body-color;
+}
+
+.quarto-page-breadcrumbs .breadcrumb-item+.breadcrumb-item, .quarto-page-breadcrumbs .breadcrumb-item {
+  font-family: $font-family-sans-serif;
+}
+
+div.sidebar.sidebar-navigation.rollup.quarto-sidebar-toggle-contents, nav.sidebar.sidebar-navigation:not(.rollup) {
+  background-color: $theme-main !important;
+  color: lighten($theme-gray, 50%) !important;
+  font-family: $font-family-sans-serif;
+  line-height: 1.2;
+}
+
+.sidebar-navigation .sidebar-item {
+  font-size: .85rem;
+  line-height: 1.2;
+  margin-top: 0.3em;
+  margin-bottom: 0em;
+}
+
+.sidebar {
+  font-family: $font-family-sans-serif;
+  background-color: lighten($theme-gray, 50%);
+  color: $theme-main;
+}
+
+.sidebar-title {
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+  font-weight: bold;
+}
+
+.sidebar-title>a:hover {
+  color: $theme-orange !important;
+}
+
+.sidebar-navigation, .sidebar-item {
+  font-family: $font-family-sans-serif;
+  color: lighten($theme-gray, 50%);
+  background-color: $theme-main !important;
+}
+
+.sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
+  color: saturate($theme-main, 60%) !important;
+  border-left: 2px solid saturate($theme-main, 60%) !important;
+}
+
+.sidebar nav[role=doc-toc] ul>li>a.active {
+  color: saturate($theme-main, 60%) !important;
+  border-left: 1px solid saturate($theme-main, 60%) !important;
+}
+
+.sidebar nav[role=doc-toc] a:hover  {
+  color: saturate($theme-main, 60%) !important;
+  background-color: lighten($theme-gray, 50%);
+}
+
+.sidebar nav[role=doc-toc] ul>li>a:hover, .sidebar nav[role=doc-toc] ul>li>ul>li>a:hover {
+  color: saturate($theme-main, 60%) !important;
+}
+
+.sidebar-navigation {
+  background-color: $theme-main !important;
+}
+
+.sidebar-navigation,.sidebar-item a  {
+  color: lighten($theme-gray, 50%) !important;
+}
+
+#quarto-sidebar .menu-text {
+  display: flex;
+}
+#quarto-sidebar .chapter-number {
+  display: block;
+  width: 1.5em;
+  text-align: right;
+}
+#quarto-sidebar .chapter-title {
+  color: inherit !important;
+  background-color: inherit !important;
+  display: block;
+  padding-left: 8px;
+  text-indent: -2px;
+  width: 100%;
+}
+
+.sidebar-item .chapter-number {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+.sidebar-navigation,.sidebar-item a.active  {
+  color: $theme-yellow !important;
+}
+
+.sidebar-item a:hover  {
+  color: $theme-orange !important;
+}
+
+.page-navigation a:hover  {
+  color: saturate($theme-main, 60%) !important;
+}
+
+.csl-entry {
+  padding-left: 22px ;
+  text-indent: -22px ;
+}
+
+.nav-footer,.nav-page-text {
+  font-family: $font-family-sans-serif;
+  min-height: 1em;
+}
+
+.katex { font-size: 1.1em !important; }

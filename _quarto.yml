@@ -4,7 +4,6 @@ project:
 book:
   title: "This is my thesis"
   author: "Susan Su"
-  description: "A thesis submitted for the degree of Doctor of Philosophy at Monash University in 2023. Department of Econometrics & Business Statistics."
   chapters:
     - index.qmd
     - abstract.qmd
@@ -12,45 +11,14 @@ book:
     - acknowledgements.qmd
     - "01-chap1.qmd"
     - "02-chap2.qmd"
-  appendices:
-    - "A-appA.qmd"
-  references: refs.qmd
-  page-footer:
-    left: "Created using <a href='https://quarto.org'>Quarto</a>. © 2023, Susan Su"
-    border: false
-    background: light
-  sidebar:
-    background: "#cccccc"
-    style: "docked"
+    - "refs.qmd"
 
-toc-title: "<b>Sections</b>"
-html-math-method: katex
-published-title: "Last updated"
-date-format: "DD MMMM YYYY"
-number-depth: 2
 bibliography: thesisrefs.bib
-csl: apa-single-spaced.csl
-fig-height: 3.8
-fig-width: 6.3
 degreetype: Doctor of Philosophy
-submitted: 2023
+submitted: 2024
 affiliation: Department of Econometrics & Business Statistics
 degrees: 'B.Sc. (Hons), University of Tangambalanga'
-execute:
-  freeze: auto
-  echo: false
 
 format:
-  html:
-    theme:
-      - cosmo
-      - thesis.scss
-    fontsize: 16px
-    mainfont: "Merriweather, serif"
-    code-link: true
-    html-math-method: katex
-    include-in-header:
-      file: header.html
-  monashthesis-pdf:
-    keep-tex: false
-    pdf-engine: pdflatex
+  monashthesis-html: default
+  monashthesis-pdf: default

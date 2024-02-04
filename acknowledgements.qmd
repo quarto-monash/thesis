@@ -12,8 +12,8 @@ I would like to thank my pet goldfish for ...
 
 
 
-<!-- 
+<!--
 The following line is required to re-set page numbering after preliminary material in the pdf output. Do not remove
 -->
 
-\clearpage\pagenumbering{arabic}\setcounter{page}{0}
+\clearpage\pagenumbering{arabic}\setcounter{page}{1}

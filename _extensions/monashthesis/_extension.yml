@@ -1,8 +1,51 @@
 title: Monash Thesis Format Template
 author: Rob J Hyndman
-version: 0.1.0
+version: 2.0.0
 contributes:
   formats:
+    common:
+      date: today
+      date-format: "D MMMM YYYY"
+      number-depth: 2
+      toc-depth: 2
+      number-sections: true
+      fig-height: 5
+      fig-width: 8
+      knitr:
+        opts_chunk:
+          echo: false
+          warning: false
+          message: false
     pdf:
-      template: monashthesis.tex
+      documentclass: report
       pdf-engine: pdflatex
+      papersize: a4
+      fontsize: 11pt
+      geometry:
+      - top=2.5cm
+      - bottom=2.5cm
+      - left=2.5cm
+      - right=2.5cm
+      block-headings: false
+      cite-method: biblatex
+      biblio-style: authoryear-comp
+      colorlinks: true
+      linestretch: 1.5
+      template-partials:
+        - "before-title.tex"
+        - "title.tex"
+    html:
+      theme:
+        - cosmo
+        - thesis.scss
+      fontsize: 16px
+      mainfont: "Merriweather, serif"
+      code-link: true
+      toc-title: "<b>Sections</b>"
+      html-math-method: katex
+      published-title: "Last updated"
+      format-resources:
+        - fonts.html
+        - apa-single-spaced.csl
+      include-in-header:
+        file: fonts.html

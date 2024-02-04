@@ -1,0 +1,33 @@
+\def\maketitle{
+\pagenumbering{roman}
+{\sf\thispagestyle{empty}%
+  \null\vskip-.4cm%
+  \centerline{\includegraphics[width=12cm]{monash-logo}}
+  \vspace*{4cm}
+  \begin{center}\fontsize{24}{28}\sf
+     \textbf{$title$}\\[2cm]
+     \fontsize{18}{20}\sf $author$\\[0.2cm]
+     \fontsize{13}{15}\sf $degrees$
+     \vfill
+     \fontsize{13}{15}\sf A thesis submitted for the degree of\\ $degreetype$\\ at Monash University in \number\the\year\\
+     $affiliation$
+  \end{center}
+  \newpage\mbox{}\thispagestyle{empty}\newpage
+}
+}
+
+% Title and date
+
+$if(title)$
+\title{$title$}
+$endif$
+$if(subtitle)$
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{$subtitle$}
+$endif$
+\date{$date$}
