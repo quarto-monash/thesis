@@ -15,8 +15,6 @@ contributes:
           echo: false
           warning: false
           message: false
-      format-resources:
-        - american-statistical-association.csl
     pdf:
       documentclass: report
       pdf-engine: pdflatex
