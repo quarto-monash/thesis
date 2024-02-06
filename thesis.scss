@@ -53,7 +53,7 @@ h4, h5 {
 }
 
 a {
-  color:$theme-main;
+  color: saturate($theme-main, 50%);
   text-decoration: none;
 }
 
@@ -120,10 +120,8 @@ th {
   color: #ffffff !important;
   background-color: lighten($theme-main, 20%) !important;
   font-weight: bold;
-  font-family: $font-family-sans-serif;
 }
 td {
-  font-family: $font-family-sans-serif;
   background-color: lighten($theme-gray, 60%) !important;
 }
 

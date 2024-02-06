@@ -1,12 +1,14 @@
-```{r}
-#| output: asis
-cat("Produced on",format(Sys.Date(), "%e %B %Y."))
-```
+::: {.content-visible when-format="html"}
+
+A thesis submitted for the degree of {{< meta degreetype >}} at Monash University, {{< meta affiliation >}}.
+
+:::
 
 # Copyright notice {-}
 
 ```{r}
 #| output: asis
+cat("Produced on",format(Sys.Date(), "%e %B %Y.\n\n"))
 cat("© {{< meta author >}} (",format(Sys.Date(), "%Y"),").", sep="")
 ```
 
