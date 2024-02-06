@@ -14,19 +14,25 @@ $sidebar-fg: lighten($theme-gray, 10%);
 $font-family-sans-serif: 'Fira Sans', sans-serif;
 $font-family-monospace: 'Hack', monospace;
 
+$h1-font-size: 1.5rem !default;
 $h2-font-size: 1.5rem !default;
 $h3-font-size: 1.3rem !default;
 $h4-font-size: 1.1rem !default;
-$h5-font-size: 0.9rem !default;
+$h5-font-size: 1rem !default;
 
 $code-block-bg: $theme-gray;
 $code-color: $body-color;
 
 /*-- scss:rules --*/
 
+h1.title {
+  font-size: 2rem !important;
+}
+
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: $theme-main;
   font-family: $font-family-sans-serif;
   font-weight: bold;
@@ -111,11 +117,13 @@ table td, table th {
 }
 
 th {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: lighten($theme-main, 20%) !important;
   font-weight: bold;
+  font-family: $font-family-sans-serif;
 }
 td {
+  font-family: $font-family-sans-serif;
   background-color: lighten($theme-gray, 60%) !important;
 }
 

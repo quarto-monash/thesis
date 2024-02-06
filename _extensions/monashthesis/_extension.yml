@@ -4,7 +4,6 @@ version: 2.0.0
 contributes:
   formats:
     common:
-      date: today
       date-format: "D MMMM YYYY"
       number-depth: 2
       toc-depth: 2

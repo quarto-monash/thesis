@@ -5,13 +5,13 @@ book:
   title: "This is my thesis"
   author: "Susan Su"
   chapters:
-    - index.qmd
-    - abstract.qmd
-    - declaration.qmd
-    - acknowledgements.qmd
+    - text: "Front matter"
+      file: index.qmd
     - "01-chap1.qmd"
     - "02-chap2.qmd"
     - "refs.qmd"
+  sidebar:
+    style: "docked"
 
 bibliography: thesisrefs.bib
 degreetype: Doctor of Philosophy
