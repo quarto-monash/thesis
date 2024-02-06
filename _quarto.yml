@@ -14,6 +14,7 @@ book:
     style: "docked"
 
 bibliography: thesisrefs.bib
+csl: american-statistical-association.csl
 degreetype: Doctor of Philosophy
 submitted: 2024
 affiliation: Department of Econometrics & Business Statistics

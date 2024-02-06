@@ -15,6 +15,8 @@ contributes:
           echo: false
           warning: false
           message: false
+      format-resources:
+        - american-statistical-association.csl
     pdf:
       documentclass: report
       pdf-engine: pdflatex
@@ -26,8 +28,6 @@ contributes:
       - left=2.5cm
       - right=2.5cm
       block-headings: false
-      cite-method: biblatex
-      biblio-style: authoryear-comp
       colorlinks: true
       linestretch: 1.5
       template-partials:
@@ -45,6 +45,5 @@ contributes:
       published-title: "Last updated"
       format-resources:
         - fonts.html
-        - apa-single-spaced.csl
       include-in-header:
         file: fonts.html
