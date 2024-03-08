@@ -91,3 +91,9 @@
 \hypersetup{
      pdfcreator={Quarto -> pandoc -> LaTeX -> pdf}
 }
+
+
+%% PAGE BREAKING to avoid widows and orphans
+\clubpenalty = 2000
+\widowpenalty = 2000
+\usepackage{microtype}
