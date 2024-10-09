@@ -26,6 +26,8 @@ contributes:
       - left=2.5cm
       - right=2.5cm
       block-headings: false
+      cite-method: biblatex
+      biblio-style: authoryear-comp
       colorlinks: true
       linestretch: 1.5
       template-partials:
