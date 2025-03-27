@@ -16,6 +16,10 @@ cat("© {{< meta author >}} (",format(Sys.Date(), "%Y"),").", sep="")
 
 The abstract should outline the main approach and findings of the thesis and must not be more than 500 words.
 
+<!-- 
+For an honours thesis, you can remove the rest of this file apart from the last couple of lines. 
+-->
+
 # Declaration {-}
 
 > Use only one of the following declarations (Standard thesis or Thesis including published works declaration) and remove the other.
@@ -120,7 +124,7 @@ I would like to thank my pet goldfish for ...
 
 > > “This research was supported by an Australian Government Research Training Program (RTP) Scholarship.”
 
-> You may also wish to acknowledge significant and substantial contribution made by others to the research, work and writing represented and/or reported in the thesis. These could include significant contributions to: the conception and design of the project; non-routine technical work; analysis and interpretation of research data; drafting significant parts of the work or critically revising it so as to contribute to the interpretation.
+> You may also wish to acknowledge significant and substantial contribution made by others to the research, work and writing represented and/or reported in the thesis. These could include significant contributions to: the conception and design of the project; non-routine technical work; analysis and interpretation of research data; drafting significant parts of the work or critically revising it to contribute to the interpretation.
 
 <!--
 The following line is required to re-set page numbering after preliminary material in the pdf output. Do not remove
