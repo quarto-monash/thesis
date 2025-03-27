@@ -3,7 +3,9 @@
 ```{r}
 #| label: load_packages
 #| include: false
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
 library(tsibble)
 library(feasts)
 library(fable)
@@ -21,14 +23,13 @@ For details on using Quarto, see <http://quarto.org>.
 
 ## Data
 
-Included in this template is a file called `sales.csv`. This contains quarterly data on Sales and Advertising budget for a small company over the period 1981--2005. It also contains the GDP (gross domestic product) over the same period. All series have been adjusted for inflation. We can load in this data set using the following code:
+Included in this template is a file called `sales.csv`. We can load in this data set using the following code:
 
 ```{r}
 #| label: load_data
 #| echo: true
 #| message: false
 sales <- readr::read_csv(here::here("data/sales.csv")) |>
-  rename(Quarter = `...1`) |>
   mutate(
     Quarter = as.Date(paste0("01-", Quarter), "%d-%b-%y"),
     Quarter = yearquarter(Quarter)
